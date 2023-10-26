@@ -1,0 +1,32 @@
+spring:
+  h2:
+    console:
+      enabled: true # http://localhost/h2-console 접근 허용
+
+  sql:
+    init:
+      encoding: UTF-8 # 데이터 베이스 조회시 한글깨짐 문제 수정
+
+  datasource:
+    url: jdbc:h2:mem:testdb  # h2 테스트 DB 설정
+
+  jpa:
+    defer-datasource-initialization: true # resources 디렉터리의 data.sql Spring boot 시작시 자동 로딩하도록 설정.
+
+server:
+  port: 10000 # Spring boot 서버 서비스 포트 설정
+  error:
+    include-exception: true # 오류 응답에 exception 내용을 포함할지 여부
+    include-stacktrace: always # 오류 응답에 stacktrace 내용을 포함할지 여부
+  whitelabel:
+    enabled: false # 브라우저 요청에 대해 서버 오류시 기본 오류 페이지를 사용할지 여부
+  servlet:
+    encoding: # Spring boot 의 기본인코딩은 ASCII이다. 인코딩을 UTF-8로 사용하도록 설정
+      charset: UTF-8
+      enabled: true
+      force: true
+
+# jwt 설정값 JwtProperties 에서 사용
+jwt:
+  issuer: choiyh.synology.me
+  secret_key: iYGUmtHt6xbPkI5fjYBbjqXbk48MVhJr42qtTJYEcsk=
